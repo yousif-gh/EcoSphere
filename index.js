@@ -113,17 +113,7 @@ function loadModel(url) {
   });
 }
 
-document.getElementById('co2EmissionsBtn').addEventListener('click', () => {
-  loadModel('Jsons/CO2Emissions.json');
-});
 
-document.getElementById('methaneBtn').addEventListener('click', () => {
-  loadModel('Jsons/Methane.json');
-});
-
-document.getElementById('co2FluxBtn').addEventListener('click', () => {
-  loadModel('Jsons/CO2Flux.json');
-});
 
 animate();
 
