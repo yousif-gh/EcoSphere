@@ -7,8 +7,8 @@ import { getFresnelMat } from "./src/getFresnelMat.js";
 const w = window.innerWidth;
 const h = window.innerHeight;
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
-camera.position.z = 5;
+const camera = new THREE.PerspectiveCamera(40, w / h, 0.1, 100);
+camera.position.z = 4;
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(w, h);
 document.body.appendChild(renderer.domElement);
@@ -18,8 +18,8 @@ renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
 
 const zoom = new OrbitControls(camera, renderer.domElement);
 zoom.enableZoom = true; // Enable zooming
-zoom.minDistance = 10; // Minimum zoom distance
-zoom.maxDistance = 100; // Maximum zoom distance
+zoom.minDistance = 2; // Minimum zoom distance
+zoom.maxDistance = 9; // Maximum zoom distance
 
 const earthGroup = new THREE.Group();
 earthGroup.rotation.z = -23.4 * Math.PI / 180;
