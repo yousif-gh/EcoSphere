@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Panel Example</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Button container */
+        .buttons {
+            position: fixed;
+            right: 10px;
+            top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Styling for buttons */
+        .buttons button {
+            background-color: #111;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .buttons button:hover {
+            background-color: #333;
+        }
+
+        /* Floating Panel (initially hidden) */
+        .floating-panel {
+            position: fixed;
+            top: 0;
+            left: -400px; /* Initially hidden off-screen to the left */
+            width: 400px;
+            height: 100%; /* Full height */
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+             /* Rounded corners on the right side */
+            transition: left 0.5s ease; /* Smooth transition */
+        }
+
+        .floating-panel.active {
+            left: 0; /* Move into view */
+        }
+
+        .floating-panel h2 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .floating-panel .description {
+            color: #fff;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Close button hidden initially */
+        .close-button {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .floating-panel.active .close-button {
+            display: block; /* Show when panel is active */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Buttons to open the panel -->
+    <div class="buttons">
+        <button  id="co2EmissionsBtn" onclick="showPanel('Panel 1', 'This is the description for Panel 1.')">Open Panel 1</button>
+        <button id="methaneBtn" onclick="showPanel('Panel 2', 'This is the description for Panel 2.')">Open Panel 2</button>
+        <button id="co2FluxBtn" onclick="showPanel('Panel 3', 'This is the description for Panel 3.')">Open Panel 3</button>
+    </div>
+
+    <!-- Floating Panel -->
+    <div id="floating-panel" class="floating-panel">
+        <h2 id="panel-title">Panel Title</h2>
+        <p id="panel-description" class="description">This is a floating panel content.</p>
+        <button class="close-button" onclick="hidePanel()">Close</button>
+    </div>
+
+    <script>
+        function showPanel(panelTitle, panelDescription) {
+            document.getElementById("panel-title").innerText = panelTitle;
+            document.getElementById("panel-description").innerText = panelDescription;
+            const panel = document.getElementById("floating-panel");
+            panel.classList.add("active"); // Add class to show the panel
+        }
+
+        function hidePanel() {
+            const panel = document.getElementById("floating-panel");
+            panel.classList.remove("active"); // Remove class to hide the panel
+        }
+    </script>
+
+</body>
+</html>
